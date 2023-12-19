@@ -1,0 +1,47 @@
+
+
+
+
+  <body>
+    <div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field appearance="fill" width="100">
+          <mat-label>title</mat-label>
+          <input matInput formControlName="title" placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill" width="100">
+          <mat-label>lieu</mat-label>
+          <input matInput formControlName="lieu" placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill" width="100">
+          <mat-label>lieu</mat-label>
+          <input matInput formControlName="lieu" placeholder="Placeholder">
+        </mat-form-field>
+      </p>
+      
+        <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+              <input matStartDate formControlName="dateDebut" placeholder="Start date">
+              <input matEndDate formControlName="dateFin" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          
+          <p>Selected range: {{range.value | json}}</p>
+      
+      <div class="example-button-row" fxLayout="row" fxLayoutAlign="center center">
+      <button type="submit" mat-raised-button color="accent">submit</button>
+    </div>
+    </form>
+    
+    </div>
+    </body>

@@ -1,0 +1,10 @@
+
+.chart-wrapper {
+    max-width: 500px; /* Adjust as needed */
+    max-height: 400px; /* Adjust as needed */
+    margin: 10px; /* Add margin as needed */
+  }
+.charts {
+    margin-top: 70px;
+}
+  

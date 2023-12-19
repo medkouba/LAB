@@ -1,0 +1,44 @@
+{
+  "members": [
+    {
+      "id": "1234567",
+      "cin": "12358",
+      "name": "med",
+      "createdDate": "12/12/22",
+      "cv": "https://www.cdc.gov/polio/stop/pdf/stop-cv-format.pdf",
+      "type": "teacher",
+      "tab_pub":["pub1","pub2","pub1","pub2"]
+    },
+    {
+      "id": "2234567",
+      "cin": "12358",
+      "name": "ahmed",
+      "createdDate": "12/12/22",
+      "cv": "https://www.cdc.gov/polio/stop/pdf/stop-cv-format.pdf",
+      "type": "student",
+      "tab_pub":["pub1","pub2"]
+    },
+    {
+      "id": "3234567",
+      "cin": "12358",
+      "name": "ali",
+      "createdDate": "12/12/22",
+      "cv": "https://www.cdc.gov/polio/stop/pdf/stop-cv-format.pdf",
+      "type": "student",
+      "tab_pub":["pub1","pub2","pub3"]
+    }
+  ],
+  "events": [
+    {
+      "id": "1222331",
+      "title": "conference",
+      "lieu":"sfax",
+      "dateDebut": "10/12/2020",
+      "dateFin": "12/12/2020"
+    }
+  ],
+  "article":{
+
+  }
+  
+}

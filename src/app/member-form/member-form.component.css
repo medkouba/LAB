@@ -1,0 +1,48 @@
+/* your-component.styles.css */
+
+body {
+    background-color: #413d3d; /* Darker grey background for the entire page */
+    margin: 0; /* Remove default body margin */
+    font-family: 'Arial', sans-serif; /* Adjust the font-family as needed */
+    color: #fff; /* Set text color to white */
+  }
+  
+  .container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  form {
+    width: 80%;
+    max-width: 700px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 55px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    background-color: #4c6e8d; /* Set container background color */
+    color: #bab0b0c4; /* Set text color within the container */
+  }
+  
+  mat-form-field {
+    flex-grow: 1;
+    margin-left: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  mat-input {
+    height: 40px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    form {
+      width: 90%;
+    }
+  }
+  

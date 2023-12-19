@@ -1,0 +1,40 @@
+<body>
+<div class="container">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field appearance="fill" width="100">
+      <mat-label>CIN</mat-label>
+      <input matInput formControlName="cin" placeholder="Placeholder">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" width="100">
+      <mat-label>NAME</mat-label>
+      <input matInput formControlName="name" placeholder="Placeholder">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" width="100">
+      <mat-label>CreatedDate</mat-label>
+      <input matInput formControlName="CreatedDate" placeholder="Placeholder">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" width="100">
+      <mat-label>CV</mat-label>
+      <input matInput formControlName="cv" placeholder="Placeholder">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" width="100">
+      <mat-label>TYPE</mat-label>
+      <input matInput formControlName="type" placeholder="Placeholder">
+    </mat-form-field>
+  </p>
+  <div class="example-button-row" fxLayout="row" fxLayoutAlign="center center">
+  <button type="submit" mat-raised-button color="accent">submit</button>
+</div>
+</form>
+
+</div>
+</body>
