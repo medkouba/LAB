@@ -1,40 +1,111 @@
 <body>
-<div class="container">
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <p>
-    <mat-form-field appearance="fill" width="100">
-      <mat-label>CIN</mat-label>
-      <input matInput formControlName="cin" placeholder="Placeholder">
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill" width="100">
-      <mat-label>NAME</mat-label>
-      <input matInput formControlName="name" placeholder="Placeholder">
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill" width="100">
-      <mat-label>CreatedDate</mat-label>
-      <input matInput formControlName="CreatedDate" placeholder="Placeholder">
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill" width="100">
-      <mat-label>CV</mat-label>
-      <input matInput formControlName="cv" placeholder="Placeholder">
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill" width="100">
-      <mat-label>TYPE</mat-label>
-      <input matInput formControlName="type" placeholder="Placeholder">
-    </mat-form-field>
-  </p>
-  <div class="example-button-row" fxLayout="row" fxLayoutAlign="center center">
-  <button type="submit" mat-raised-button color="accent">submit</button>
-</div>
-</form>
-
-</div>
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="ONSUB()">
+            <tr>
+                <td fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>First name</mat-label>
+                            <input matInput formControlName="nom">
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="prenom">
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Cin</mat-label>
+                            <input matInput #cin maxlength="8" placeholder="Ex. 08794105" formControlName="cin">
+                            <mat-hint>{{cin.value.length}} / 8</mat-hint>
+                        </mat-form-field>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width-email" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+                            <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="email.hasError('required')">
+                                Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td fxFlex>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Enter your password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td *ngIf="currentID == null "fxFlex>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select</mat-label>
+                            <mat-select [(value)]="selected">
+                                <mat-option value=1>enseignant</mat-option>
+                                <mat-option value=2>etudiant</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td *ngIf="(selected==1 && currentID == null) || form.get('grade')?.value !== null " fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Grade</mat-label>
+                            <input matInput formControlName="grade">
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td *ngIf="(selected==1 && currentID == null) || form.get('etablissement')?.value !== null" fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Etablissement</mat-label>
+                            <input matInput formControlName="etablissement">
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td *ngIf="selected==2 || form.get('diplome')?.value !== null" fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Diplome</mat-label>
+                            <input matInput formControlName="diplome">
+                        </mat-form-field>
+                    </p>
+                </td>
+                <td *ngIf="selected==2 || form.get('dateInscription')?.value !== null" fxFlex>
+                    <p>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>date d'inscreption</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="dateInscription">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </p>
+                </td>
+            </tr>
+            <button mat-raised-button type="submit">submit</button>
+        </form>
+    </div>
 </body>

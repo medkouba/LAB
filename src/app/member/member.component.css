@@ -10,3 +10,16 @@ table {
 .example-disabled {
   display: inline-block;
 }
+
+.example-button-row{
+  margin-bottom: -160px;
+}
+
+table {
+  margin-top: 20px;
+}
+
+.filtre{
+  margin-top: 120px;
+  margin-bottom: -20px;
+}

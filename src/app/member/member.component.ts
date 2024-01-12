@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Member } from 'src/models/Member';
-import { GLOBAL } from '../app-config';
 import { MemberService } from 'src/services/member.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ComfirmDialogComponent } from '../comfirm-dialog/comfirm-dialog.component';
@@ -13,13 +12,31 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./member.component.css']
 })
 export class MemberComponent {
- //dataSource:Member[] = GLOBAL._DB.members ; 
- displayedColumns: string[] = ['id', 'cin', 'name', 'createdDate','cv', 'type','action'];
+ //dataSource:any[] ; 
+ displayedColumns: string[] = ['id','cin','full name', 'dateInscription','email', 'type','action'];
 
-constructor(private MS:MemberService , private dialog:MatDialog){} // injection de dependence
+constructor(private MS:MemberService , private dialog:MatDialog){
+  this.fetchDataSource() 
+} // injection de dependence
   
- dataSource = new MatTableDataSource(this.MS.tab);
+// dataSource = new MatTableDataSource(this.MS.tab);
+dataSource = new MatTableDataSource();
+  fetchDataSource():void{
+    this.MS.getAllMembers().subscribe((res)=>{this.dataSource.data=res
+    console.log(res)
 
+    const modifiedData = res.map((item) => ({
+      ...item,
+      type_mbr: item.grade?.valueOf == null ? 'Etudiant' : 'Enseignant'
+    }));
+
+    this.dataSource.data = modifiedData;
+    console.log(modifiedData);
+
+    })
+
+    
+  }
 
  Delete(memberId: string):void {
 
@@ -33,7 +50,7 @@ constructor(private MS:MemberService , private dialog:MatDialog){} // injection 
 
     if(x) {
       this.MS.DeleteMemberByID(memberId).subscribe(()=>{
-        this.fetch();      
+        this.fetchDataSource();      
       })
     }
 
@@ -44,13 +61,13 @@ constructor(private MS:MemberService , private dialog:MatDialog){} // injection 
    
   
 }
-
+/*
 fetch(): void {
   this.MS.getAllMembers().subscribe((member) => {
     this.dataSource.data = member;
   });
 }
-
+*/
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
 
